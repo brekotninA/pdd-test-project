@@ -12,11 +12,9 @@ object FTrainer: TFTrainer
   Font.Height = -19
   Font.Name = 'Times New Roman'
   Font.Style = [fsBold]
-  OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 22
   object Image1: TImage
     Left = 8
@@ -65,6 +63,7 @@ object FTrainer: TFTrainer
         Width = 50
       end>
     UseSystemFont = False
+    ExplicitWidth = 846
   end
   object Memo1: TMemo
     Left = 401

@@ -12,14 +12,12 @@ object FResults: TFResults
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
     635
     510)
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 56
@@ -57,7 +55,7 @@ object FResults: TFResults
     OnDblClick = ListBox1DblClick
   end
   object Button1: TButton
-    Left = 435
+    Left = 431
     Top = 460
     Width = 193
     Height = 41
@@ -71,9 +69,11 @@ object FResults: TFResults
     ParentFont = False
     TabOrder = 1
     OnClick = Button1Click
+    ExplicitLeft = 427
+    ExplicitTop = 459
   end
   object Button2: TButton
-    Left = 435
+    Left = 431
     Top = 396
     Width = 193
     Height = 41
@@ -87,9 +87,11 @@ object FResults: TFResults
     ParentFont = False
     TabOrder = 2
     OnClick = Button2Click
+    ExplicitLeft = 427
+    ExplicitTop = 395
   end
   object Memo1: TMemo
-    Left = 305
+    Left = 301
     Top = 48
     Width = 323
     Height = 209
@@ -112,9 +114,10 @@ object FResults: TFResults
     ScrollBars = ssVertical
     TabOrder = 3
     Visible = False
+    ExplicitLeft = 297
   end
   object Memo2: TMemo
-    Left = 305
+    Left = 301
     Top = 48
     Width = 323
     Height = 209
@@ -135,6 +138,35 @@ object FResults: TFResults
     ScrollBars = ssVertical
     TabOrder = 4
     Visible = False
+    ExplicitLeft = 297
+  end
+  object StaticText1: TStaticText
+    Left = 301
+    Top = 288
+    Width = 135
+    Height = 21
+    Caption = #1042#1088#1077#1084#1103' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103': '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -14
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+  end
+  object StaticText2: TStaticText
+    Left = 431
+    Top = 288
+    Width = 26
+    Height = 21
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -14
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
   end
   object ImageList1: TImageList
     ColorDepth = cd24Bit

@@ -6,7 +6,8 @@ uses
   UConfigClient in 'UConfigClient.pas',
   UMainMenu in 'Forms\UMainMenu.pas' {FMainMenu},
   UResults in 'Forms\UResults.pas' {FResults},
-  UTrainer in 'Forms\UTrainer.pas' {FTrainer};
+  UTrainer in 'Forms\UTrainer.pas' {FTrainer},
+  UDBModule in 'UDBModule.pas';
 
 {$R *.res}
 
@@ -19,6 +20,5 @@ begin
   Application.CreateForm(TFMainMenu, FMainMenu);
   Application.CreateForm(TFResults, FResults);
   Application.CreateForm(TFTrainer, FTrainer);
-
   Application.Run;
 end.
