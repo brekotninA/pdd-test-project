@@ -1,7 +1,7 @@
 object FTrainer: TFTrainer
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
+  BorderIcons = []
   BorderStyle = bsSingle
   Caption = #1058#1088#1077#1085#1072#1078#1105#1088
   ClientHeight = 543
@@ -2096,5 +2096,20 @@ object FTrainer: TFTrainer
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000}
+  end
+  object ADOConnection1: TADOConnection
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 32
+    Top = 32
+  end
+  object ADOQuery1: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 112
+    Top = 32
+  end
+  object SQLConnection1: TSQLConnection
+    Left = 192
+    Top = 32
   end
 end

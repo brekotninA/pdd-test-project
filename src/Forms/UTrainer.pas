@@ -3,7 +3,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, JPEG, UConfigClient, System.ImageList,
-  Vcl.ImgList;
+  Vcl.ImgList,  DB, ADODB, Data.SqlExpr;
 type
   TFTrainer = class(TForm)
 
@@ -29,6 +29,9 @@ type
     Memo6: TMemo;
     Button6: TButton;
     ImageList1: TImageList;
+    ADOConnection1: TADOConnection;
+    ADOQuery1: TADOQuery;
+    SQLConnection1: TSQLConnection;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure load_tets();
@@ -37,6 +40,7 @@ type
     procedure IsChecked();
     procedure Back();
     procedure Forward();
+    procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
@@ -67,7 +71,7 @@ uses UMainMenu, UResults;
 procedure TFTrainer.load_tets();
 var
   i:Integer;
-  tmp_str,tmp_otv,tmp_otv2,tmp_otv3,tmp_otv4:String;
+  tmp_str,tmp_otv:String;
   kol_otv:Integer;
   pyt1:String;
 begin
@@ -79,8 +83,22 @@ begin
   pyt1 := Config.PathTickets + IntToStr(number_bil)+'_bilet/';
   if(DirectoryExists(pyt1))then
   begin
-    memo1.Lines.LoadFromFile(pyt1+IntToStr(index_vopr)+'_text.txt');
-    memo6.Lines.LoadFromFile(pyt1+IntToStr(index_vopr)+'_help.txt');
+      with FMainMenu.ADOQuery1 do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text:='SELECT [text_' + IntToStr(index_vopr) + '] FROM textBil where ID=' + IntToStr(number_bil);
+        Open;
+        First;
+        memo1.Lines.Text := Fields[0].AsString;
+        Close;
+        SQL.Clear;
+        SQL.Text:='SELECT [help_' + IntToStr(index_vopr) + '] FROM help where ID=' + IntToStr(number_bil);
+        Open;
+        First;
+        memo6.Lines.Text := Fields[0].AsString;
+  end;
+
     if(FileExists(pyt1+IntToStr(index_vopr)+'_pic.jpg'))then
       Image1.Picture.LoadFromFile(pyt1+IntToStr(index_vopr)+'_pic.jpg') else
       Image1.Picture.Graphic:=nil;
@@ -412,6 +430,40 @@ begin
     Button1.Visible:=False;
     Button5.Visible:=True;
     Button6.Enabled:=False;
+  end;
+end;
+
+procedure TFTrainer.FormCreate(Sender: TObject);
+begin
+  var PASSWORD_TO_DB := EmptyStr;
+
+  try
+    ADOConnection1.ConnectionString :=
+        'Provider=Microsoft.Jet.OLEDB.4.0;'+
+        'User ID=Admin;'+
+        'Data Source='+Config.PathDataBase+';'+
+        'Mode=Share Deny None;'+
+        'Extended Properties="";'+
+        'Jet OLEDB:System database="";'+
+        'Jet OLEDB:Registry Path="";'+
+        'Jet OLEDB:Database Password="'+PASSWORD_TO_DB+'";'+
+        'Jet OLEDB:Engine Type=5;'+
+        'Jet OLEDB:Database Locking Mode=1;'+
+        'Jet OLEDB:Global Partial Bulk Ops=2;'+
+        'Jet OLEDB:Global Bulk Transactions=1;'+
+        'Jet OLEDB:New Database Password="'+PASSWORD_TO_DB+'";'+
+        'Jet OLEDB:Create System Database=False;'+
+        'Jet OLEDB:Encrypt Database=False;'+
+        'Jet OLEDB:Don'+'''t Copy Locale on Compact=False;'+
+        'Jet OLEDB:Compact Without Replica Repair=False;'+
+        'Jet OLEDB:SFP=False';
+
+    ADOConnection1.Connected := true;
+  except on E : Exception do
+    begin
+      ShowMessage(Format('Ошибка при подключении к БД. %s', [E.Message]));
+      Application.Terminate;
+    end;
   end;
 end;
 end.

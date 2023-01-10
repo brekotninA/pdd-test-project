@@ -1,7 +1,7 @@
 object FResults: TFResults
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
+  BorderIcons = []
   BorderStyle = bsSingle
   Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090#1099
   ClientHeight = 510
@@ -55,7 +55,7 @@ object FResults: TFResults
     OnDblClick = ListBox1DblClick
   end
   object Button1: TButton
-    Left = 431
+    Left = 427
     Top = 460
     Width = 193
     Height = 41
@@ -69,11 +69,11 @@ object FResults: TFResults
     ParentFont = False
     TabOrder = 1
     OnClick = Button1Click
-    ExplicitLeft = 427
+    ExplicitLeft = 423
     ExplicitTop = 459
   end
   object Button2: TButton
-    Left = 431
+    Left = 427
     Top = 396
     Width = 193
     Height = 41
@@ -87,11 +87,11 @@ object FResults: TFResults
     ParentFont = False
     TabOrder = 2
     OnClick = Button2Click
-    ExplicitLeft = 427
+    ExplicitLeft = 423
     ExplicitTop = 395
   end
   object Memo1: TMemo
-    Left = 301
+    Left = 297
     Top = 48
     Width = 323
     Height = 209
@@ -114,10 +114,10 @@ object FResults: TFResults
     ScrollBars = ssVertical
     TabOrder = 3
     Visible = False
-    ExplicitLeft = 297
+    ExplicitLeft = 293
   end
   object Memo2: TMemo
-    Left = 301
+    Left = 297
     Top = 48
     Width = 323
     Height = 209
@@ -138,7 +138,7 @@ object FResults: TFResults
     ScrollBars = ssVertical
     TabOrder = 4
     Visible = False
-    ExplicitLeft = 297
+    ExplicitLeft = 293
   end
   object StaticText1: TStaticText
     Left = 301
@@ -157,7 +157,7 @@ object FResults: TFResults
   object StaticText2: TStaticText
     Left = 431
     Top = 288
-    Width = 26
+    Width = 12
     Height = 21
     Caption = '0'
     Font.Charset = DEFAULT_CHARSET

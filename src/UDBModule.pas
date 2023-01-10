@@ -10,7 +10,7 @@ interface
   implementation
 
 
-procedure AddConnection(pass:String);
+{procedure AddConnection(pass:String);
 begin
     ADOConnection1.ConnectionString :=
         'Provider=Microsoft.Jet.OLEDB.4.0;'+
@@ -33,5 +33,5 @@ begin
         'Jet OLEDB:SFP=False';
 
 end;
-
+     }
 end.

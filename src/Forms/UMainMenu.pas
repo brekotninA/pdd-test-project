@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, ADODB, ExtCtrls, UConfigClient;
+  Dialogs, StdCtrls, DB, ADODB, ExtCtrls, UConfigClient, Data.SqlExpr;
 
 type
   TFMainMenu = class(TForm)
@@ -22,6 +22,7 @@ type
     Button7: TButton;
     Memo1: TMemo;
     ADOConnection1: TADOConnection;
+    SQLConnection1: TSQLConnection;
     procedure Button1Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
@@ -52,7 +53,7 @@ uses UTrainer;
 procedure TFMainMenu.Button1Click(Sender: TObject);
 begin
   if(application.MessageBox(PChar('Хотите выйти из программы ?'),'Информация .',mb_YesNo or mb_iconquestion)=mrYes)then
-    FMainMenu.Close;
+    Application.Terminate;
 end;
 
 procedure TFMainMenu.Button2Click(Sender: TObject);

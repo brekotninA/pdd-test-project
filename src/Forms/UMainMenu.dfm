@@ -12,10 +12,8 @@ object FMainMenu: TFMainMenu
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
     Left = 192
@@ -215,6 +213,10 @@ object FMainMenu: TFMainMenu
   object ADOConnection1: TADOConnection
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 88
+    Top = 8
+  end
+  object SQLConnection1: TSQLConnection
+    Left = 176
     Top = 8
   end
 end
