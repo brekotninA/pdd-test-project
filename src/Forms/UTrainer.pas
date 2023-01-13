@@ -87,31 +87,28 @@ begin
       begin
         Close;
         SQL.Clear;
-        SQL.Text:='SELECT [text_' + IntToStr(index_vopr) + '] FROM textBil where ID=' + IntToStr(number_bil);
+        SQL.Text:='SELECT [text_' + IntToStr(index_vopr) + '], [help_' + IntToStr(index_vopr) + '], [answers_'+ IntToStr(index_vopr)+ '] FROM textBil, help, answers where textBil.ID=' + IntToStr(number_bil) + 'and answers.ID=' + IntToStr(number_bil) + 'and help.ID = ' + IntToStr (number_bil);
         Open;
         First;
         memo1.Lines.Text := Fields[0].AsString;
-        Close;
-        SQL.Clear;
-        SQL.Text:='SELECT [help_' + IntToStr(index_vopr) + '] FROM help where ID=' + IntToStr(number_bil);
-        Open;
-        First;
-        memo6.Lines.Text := Fields[0].AsString;
+        memo6.Lines.Text := Fields[1].AsString;
+        memo2.Lines.Text := Fields[2].AsString;
+
   end;
 
     if(FileExists(pyt1+IntToStr(index_vopr)+'_pic.jpg'))then
       Image1.Picture.LoadFromFile(pyt1+IntToStr(index_vopr)+'_pic.jpg') else
       Image1.Picture.Graphic:=nil;
-    memo2.Lines.LoadFromFile(pyt1+IntToStr(index_vopr)+'_otv.txt');
+
     tmp_str:=memo2.lines.text;
     memo2.Clear;
     while (pos('#',tmp_str) > 0) do
     begin
       if(pos('#',tmp_str) > 0)then
       begin
-        tmp_otv:=Copy(tmp_str,pos('#',tmp_str)+2,pos(#13#10,tmp_str)-2);
+        tmp_otv:=Copy(tmp_str,pos('#',tmp_str)+2,pos('.',tmp_str)-2);
         inc(kol_otv);
-        Delete(tmp_str,pos('#',tmp_str),pos(#13#10,tmp_str));
+        Delete(tmp_str,pos('#',tmp_str),pos('.',tmp_str));
         if(kol_otv = 1)then
           memo2.Text:=tmp_otv;
         if(kol_otv = 2)then
